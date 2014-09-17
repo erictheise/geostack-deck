@@ -1,0 +1,27 @@
+.overphoto {
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.45);
+  margin: auto;
+  border-radius: 30px;
+}
+.overphoto h2 {
+  padding: 30px;
+}
+.overphoto img {
+  vertical-align: middle;
+  padding: 0 8px 0 8px;
+}
+.overphoto small {
+  vertical-align: middle;
+}
+.overphoto .no-border {
+  border: 0;
+}
+
+.reveal h2 {
+  font-size: 1.8em;
+}
+.reveal li,
+.reveal blockquote {
+  font-size: 0.8em;
+}

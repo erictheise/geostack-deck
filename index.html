@@ -1,0 +1,2223 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Let's Talk About Your Geostack</title>
+
+    <meta name="description" content="A collection of open source tools for getting going with geo.">
+    <meta name="author" content="Eric Theise">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Customizations for Geostack deck -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-54393148-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+      <section data-markdown>
+        <script type="text/template">
+          ### Let's talk about your
+          # Geostack
+
+          <small>
+            A workshop presented by <a href="http://erictheise.com/">Eric Theise</a> / <a href="http://twitter.com/erictheise">@erictheise</a>
+          </small><br />
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="images/cc-by-nc-sa-80x15.png" /></a>
+        </script>
+      </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## You. The Audience and Presenter.
+
+            This deck is licensed for use by people studying on their own time, either individually,
+            or in a group where everyone has come together voluntarily to learn.
+
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="images/cc-by-nc-sa-88x31.png" /></a>
+
+            If you are being paid for your time as you lead people through this deck, _in any context_, you need to [
+            contact me](https://github.com/erictheise) about licensing.
+
+            If you come across any inaccuracies, or have other suggestions for improving this deck, please consider
+            [opening an issue](https://github.com/erictheise/geostack-deck/issues).
+
+            <p class="fragment">Let's begin.</p>
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Goals
+
+            Twofold.
+              <ol>
+                <li class="fragment">dirtying our hands with oft-mentioned geo tools.
+                  <p class="fragment" style="text-align:center;padding:20px;">
+                    (Familiarity breeds <em>content(ement)</em>?)
+                  </p>
+                </li>
+                <li class="fragment">assembling a complete, yet lowest common denominator collection of tools,
+                  a foundation upon which future workshops and demos can be constructed.
+                  <p class="fragment" style="text-align:center;padding:20px;">
+                    (A platform?)
+                  </p>
+                </li>
+              </ol>
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Software components
+
+            We'll be installing tools that work<br />on common operating systems.
+
+            <p class="fragment">(Mac OS X, Ubuntu 14, & Windows 8.1.)</p>
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## On the back end
+
+            <ul class="fragment fade-in">
+              <li><a href="http://python.org/">Python</a>: an open source programming language with a hefty collection
+                of well-tested libraries for numerical calculations,</li>
+              <li><a href="http://postgresql.org/">PostgreSQL</a>: an open source database that can be spatially
+                enabled with</li>
+              <li><a href="http://postgis.refractions.net/">PostGIS</a>: a PostgreSQL extension that adheres to the
+                [OpenGIS Simple Features Specification for SQL](https://en.wikipedia.org/wiki/Simple_Features), and</li>
+              <li><a href="http://nodejs.org/">Node.js</a>: a JavaScript platform for easily building network
+                applications.</li>
+            </ul>
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## On the front end
+
+            <ul class="fragment fade-in">
+              <li><a href="http://leafletjs.com/">Leaflet</a>: an open-source JavaScript library for mobile-friendly
+                interactive maps.</li>
+            </ul>
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Desktop applications
+
+            <ul class="fragment fade-in">
+              <li>the <a href="http://www.postgresql.org/docs/9.3/static/app-psql.html">psql</a> interactive console
+                included with PostgreSQL,</li>
+              <li><a href="https://www.mapbox.com/tilemill/">TileMill</a>: MapBox's application for creating
+                tiles, and</li>
+              <li>a text editor or Integrated Development Environment (IDE) of your choice.</li>
+            </ul>
+          </script>
+        </section>
+
+      <section data-markdown>
+        <script type="text/template">
+          ## Data sources
+
+          <ul class="fragment fade-in">
+            <li><a href="http://openstreetmap.org/">OpenStreetMap</a>: the long-running open map project built on
+              user-contributed data and, potentially,</li>
+            <li><a href="http://www.naturalearthdata.com/">Natural Earth</a>: a public domain map dataset
+              available at 1:10m, 1:50m, and 1:110 million scales. Even if we don't use it, you should know about it.</li>
+          </ul>
+        </script>
+      </section>
+
+        <section>
+          <section data-markdown>
+            ## I. Before the workshop
+
+            Download & install the back end, front end, and application components. The right arrow will take you through
+            Mac OS X instructions. Use the down arrow once to access instructions for Ubuntu 14 instructions, twice to
+            access instructions for Windows 8.1.
+
+          </section>
+          <section data-markdown data-background="#5e2750">
+            <script type="text/template">
+            ## Ubuntu 14
+
+            Two options for working with Ubuntu. You can run a Ubuntu virtual machine (VM) via
+            [VirtualBox](https://www.virtualbox.org/), or, if your machine already uses Ubuntu as its operating system,
+            you can install the components directly. Running a virtual machine adds one layer of complexity, but offers
+            flexibility and one layer of safety. So, a slide or six on VirtualBox.
+
+            ubuntu | [next](#/9/1)
+            </script>
+          </section>
+          <section data-markdown data-background="#00198f">
+            ## Windows 8.1
+
+            Two options for working with Windows. You can run a Windows virtual machine (VM) via
+            [VirtualBox](https://www.virtualbox.org/), or, if your machine already uses Windows as its operating system,
+            you can install the components directly. Running a virtual machine adds one layer of complexity, but offers
+            flexibility and one layer of safety. In the case of Windows, it may violate your license. Still, a slide or
+            six on VirtualBox.
+
+            windows | [next](#/9/2)
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Xcode</h2>
+            <p>
+              <a href="https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12">Download and install Xcode</a> from the Mac App Store.
+              <img src="images/Xcode.png" width="768" height="528" alt="Xcode at the Apple App Store" />
+            </p>
+          </section>
+          <section data-background="#5e2750">
+            <h2>VirtualBox</h2>
+            <p>
+              <a href="https://www.virtualbox.org/wiki/Downloads">Download</a> and install a VirtualBox platform package.
+              <img src="images/VirtualBox-Download.png" width="768" height="528" alt="VirtualBox download" />
+            </p>
+
+            <a href="#/8/1"> prev</a> | ubuntu | <a href="#/10/1">next</a>
+          </section>
+          <section data-background="#00198f">
+            <h2>VirtualBox</h2>
+            <p>
+              <a href="https://www.virtualbox.org/wiki/Downloads">Download</a> and install a VirtualBox platform package.
+              <img src="images/VirtualBox-Download.png" width="768" height="528" alt="VirtualBox download" />
+            </p>
+
+            <a href="#/8/2"> prev</a> | windows | <a href="#/10/2">next</a>
+          </section>
+        </section>
+
+        <section>
+          <section>
+          <h2>Homebrew</h2>
+          <p>
+            Installing <a href="http://brew.sh/">this OS X package manager</a> is a one-liner.
+          </p>
+          <img src="images/Homebrew.png" width="768" height="528" alt="Homebrew home page" />
+          </section>
+          <section data-background="#5e2750">
+            <h2>A Ubuntu disk image</h2>
+            <p>
+              <a href="http://www.ubuntu.com/download/desktop">Download Ubuntu</a>.
+              <img src="images/Ubuntu-Download.png" width="768" height="528" alt="VirtualBox download" />
+            </p>
+
+            <a href="#/9/1"> prev</a> | ubuntu | <a href="#/11/1">next</a>
+          </section>
+          <section data-background="#00198f">
+            <h2>A Windows disk image</h2>
+            <p>
+              <a href="http://windows.microsoft.com/en-us/windows-8/create-reset-refresh-media">Download Windows</a>. You'll need your product key.
+              <img src="images/Windows-Download.png" width="768" height="528" alt="VirtualBox download" />
+            </p>
+
+            <a href="#/9/2"> prev</a> | windows | <a href="#/11/2">next</a>
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Homebrew
+              Use your Terminal program.
+              ```
+              $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+              ==> This script will install:
+              /usr/local/bin/brew
+              /usr/local/Library/...
+              /usr/local/share/man/man1/brew.1
+
+              Press ENTER to continue or any other key to abort
+
+              [lots of output]
+
+              ==> Installation successful!
+              You should run `brew doctor` *before* you install anything.
+              Now type: brew help
+              Erics-MacBook-Pro:~ erictheise$ brew doctor
+              Your system is ready to brew.
+              ```
+
+              See https://github.com/mxcl/homebrew/wiki/installation if you need additional information about installing Homebrew.
+            </script>
+          </section>
+          <section data-markdown data-background="#5e2750">
+            ## Create the VM, 1/3
+
+              1. start the VirtualBox Application
+              2. choose `Machine`, `New`
+              3. give the machine a `Name`, e.g., `Geostack`
+              4. set the `Type` to `Linux`
+              5. set the `Version` to `Ubuntu (64 bit)`
+              6. set `Memory size`
+              7. `Create a virtual hard drive now` as a `VDI`, `Dynamically allocated`
+
+            [prev](#/10/1) | ubuntu | [next](#/12/1)
+          </section>
+          <section data-markdown data-background="#00198f">
+            ## Create the VM, 1/3
+
+            Microsoft provides a thorough [guide to Using VirtualBox](http://msdn.microsoft.com/en-us/library/windows/apps/jj945425.aspx). You won't need to install Visual Studio.
+
+            1. start the VirtualBox Application
+            2. choose `Machine`, `New`
+            3. give the machine a `Name`, e.g., `Geostack`
+            4. set the `Type` to `Microsoft Windows`
+            5. set the `Version` to `Windows 8.1 (64 bit)`
+            6. set the `Memory size` to at least `2 GB (2048 MB)`, `4 GB (4096 MB)` if you can
+            7. `Create a virtual hard drive now` as a `VDI`, `Dynamically allocated`, `40 GB`
+
+            [prev](#/10/2) | windows | [next](#/12/2)
+          </section>
+        </section>
+
+        <section>
+          <section data-transition="zoom" data-background="images/beers.jpg">
+            <div class="overphoto">
+              <h2>Yay Homebrew!</h2>
+              <div><small>Image </small><img class="overphoto no-border" src="images/cc-by-80x15.png" width="80" height="15" alt="CC BY 2.0"><span><small> <a href="http://www.flickr.com/photos/brostad/">Bernt Rostad</a>, some rights reserved</small></span></div>
+            </div>
+          </section>
+          <section data-markdown data-background="#5e2750">
+            ## Create the VM, 2/3
+
+            8. select your new VM and click `Settings`, `Storage`
+            9. click `Empty` below `Controller: IDE`
+            10. use `CD/DVD Drive` to navigate to the file you downloaded from the Ubuntu site, e.g. `ubuntu-14.0401-desktop-amd64.iso`
+            11. click `Start`
+            12. choose `Install Ubuntu`
+            13. choose `Erase disk and install Ubuntu`; no fear, you're erasing a virtual disk
+            14. proceed with installation; if it seems to hang after `Stopping early crypto disks`, choose `Machine`, `Reset (Host+R)`
+
+            [prev](#/11/1) | ubuntu | [next](#/13/1)
+          </section>
+          <section data-markdown data-background="#00198f">
+            ## Create the VM, 2/3
+
+            8. select your new VM and click `Settings`, `Storage`
+            9. select `Controller: IDE`
+            10. use `Add CD/DVD Device` to navigate to the .ISO file you downloaded from the Windows site
+            11. click `Start`
+            12. proceed with installation
+
+            [prev](#/11/2) | windows | [next](#/13/2)
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Python
+              Use your Terminal program.
+              ```
+              $ brew install python
+
+              [lots of output]
+
+              Setuptools and Pip have been installed. To update them
+              pip install --upgrade setuptools
+              pip install --upgrade pip
+
+              You can install Python packages with (the outdated easy_install or)
+              `pip install <your_favorite_package>`
+
+              They will install into the site-package directory
+              /usr/local/lib/python2.7/site-packages
+
+              See: https://github.com/mxcl/homebrew/wiki/Homebrew-and-Python
+              ==> Summary
+              /usr/local/Cellar/python/2.7.5: 5200 files, 80M, built in 3.0 minutes
+              $
+              ```
+            </script>
+          </section>
+          <section data-markdown data-background="#5e2750">
+            ## Create the VM, 3/3
+
+            15. with the VM running, choose `Devices`, `Insert Guest Additions CD image`
+            16. navigate down the dock, select the CD/DVD icon, and `Run Software`
+            17. click the gear icon at top right, `Shut Down...`, and `Restart`
+            18. `Search your computer and online sources` for `Terminal`, drag `Terminal` to the dock
+            19. click on the `Terminal` icon to get started
+
+            [prev](#/12/1) | ubuntu | [next](#/14/1)
+          </section>
+          <section data-markdown data-background="#00198f">
+            ## Create the VM, 3/3
+
+            13. with the VM running, choose `Devices`, `Insert Guest Additions CD image`
+            14. navigate to the CD Drive and run the `VirtualBox Guest Additions`
+
+            [prev](#/12/2) | windows | [next](#/14/2)
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## NumPy
+              NumPy is the fundamental package<br />for scientific computing with Python.
+
+              Use your Terminal program.
+              ```
+              $ pip install numpy
+
+              [thousands upon thousands of lines of output]
+
+              Successfully installed numpy
+              Cleaning up...
+              $
+              ```
+            </script>
+          </section>
+          <section data-markdown data-background="#5e2750">
+            <script type="text/template">
+              ## Ubuntu's Advanced Packaging Tool
+
+              Ubuntu includes the APT package manager. [apt-get](https://help.ubuntu.com/14.04/serverguide/apt-get.html)
+              will update your system and install the software needed for the workshop.
+
+              Use your Terminal program. Occasionally answer `Y` to continue.
+              ```
+              $ sudo apt-get update
+
+              [lots of output]
+
+              $ sudo apt-get upgrade
+
+              [more output]
+
+              $ sudo apt-get install python-numpy
+
+              [you get the idea]
+
+              $ sudo apt-get install postgresql-9.3 postgresql-contrib-9.3
+              $ sudo apt-get install postgresql-9.3-postgis-2.1
+              $ sudo apt-get install osm2pgsql
+              $ sudo apt-get install nodejs
+              $ sudo apt-get install npm
+              ```
+
+              [prev](#/13/1) | ubuntu | [next](#/15/1)
+            </script>
+          </section>
+          <section data-background="#00198f">
+            <h2>Python</h2>
+            <p>
+              <a href="https://www.python.org/downloads/">Download</a> and install Python 2.7.X.
+              <img src="images/Windows-Python.png" width="667" height="528" alt="Python download" />
+            </p>
+
+            <a href="#/13/2"> prev</a> | windows | <a href="#/15/2">next</a>
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## PostGIS
+              Use your Terminal program.
+              ```
+              $ brew install postgis
+
+              [lots of output]
+
+              ==> Summary
+              /usr/local/Cellar/postgis/2.1.0: 44 files, 7.6M, built in 86 seconds
+              $
+              ```
+
+              Along the way, a number of important <em>Caveats</em><br />scrolled past in the output.
+            </script>
+          </section>
+          <section data-markdown data-background="#5e2750">
+            <script type="text/template">
+              ## Your PostgreSQL role
+
+              Switch to the `postgres` administrator account and create a PostgreSQL role corresponding to your Ubuntu
+              account.
+              ```
+              $ whoami
+              erictheise
+              ﻿$ sudo -i -u postgres
+              [sudo] password for erictheise:
+              $ whoami
+              postgres
+              ﻿$ createuser --interactive
+              Enter name of role to add: erictheise
+              Shall the new role be a superuser? (y/n) n
+              Shall the new role be allowed to create databases? (y/n) y
+              Shall the new role be allowed to create more new roles? (y/n) n
+              $ exit
+              logout
+              $ whoami
+              erictheise
+              $
+              ```
+
+              [prev](#/14/1) | ubuntu | [next](#/16/1)
+            </script>
+          </section>
+          <section data-markdown data-background="#00198f">
+            ## pip
+
+            pip is the contemporary way to install Python packages.
+
+            [Download it](https://bootstrap.pypa.io/get-pip.py), open a Windows PowerShell, execute it, then add the
+            Scripts directory to your path.
+            ```
+            Windows PowerShell
+            Copyright (C) 2013 Microsoft Corporation. All rights reserved.
+
+            PS C:\Users\erictheise> python Downloads\get-pip.py
+            Downloading/unpacking pip
+            Downloading/unpacking setuptools
+            Installing collected packages: pip, setuptools
+            Successfully installed pip setuptools
+            Cleaning up...
+            PS C:\Users\erictheise> setx PATH "%PATH%;C:\Python27\Scripts"
+            ```
+
+            [Official instructions](https://pip.pypa.io/en/latest/installing.html) are available.
+
+            [prev](#/14/2) | windows | [next](#/16/2)
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown data-background="#ffd500">
+            <script type="text/template">
+              ## Caveat 1: PostgreSQL
+              ```
+              ==> Caveats
+              initdb /usr/local/var/postgres -E utf8    # create a database cluster
+              postgres -D /usr/local/var/postgres       # serve that database
+              PGDATA=/usr/local/var/postgres postgres   # …alternatively
+              ```
+
+              You need to run the first line, exactly as is, to initialize your PostgreSQL installation.
+              ```
+              $ initdb /usr/local/var/postgres -E utf8
+              ```
+              The other two lines are ways to start the PostgreSQL server. Consider two alternatives.
+
+            </script>
+          </section>
+          <section data-background="#5e2750">
+            <h2>TileMill</h2>
+            <p>
+              <a href="https://www.mapbox.com/tilemill/">Download</a> and install TileMill
+              from MapBox.
+              <img src="images/Ubuntu-TileMill.png" width="768" height="528" alt="TileMill download" />
+            </p>
+
+            <a href="#/15/1"> prev</a> | ubuntu | <a href="#/21/1">next</a>
+          </section>
+          <section data-background="#00198f">
+            <h2>NumPy</h2>
+            <p>
+              <a href="http://sourceforge.net/projects/numpy/files/NumPy/1.8.2/">Download the installer</a>.
+              The filenames are very long, so make sure you get a python2.7 version.
+            </p>
+
+            <p><img src="images/Windows-NumPy.png" width="667" height="528" alt="NumPy download"></p>
+
+            <a href="#/15/2"> prev</a> | windows | <a href="#/17/2">next</a>
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown data-background="#ffd500">
+            <script type="text/template">
+              ## Caveat 2: PostgreSQL
+              ```
+              ==> Caveats
+              To have launchd start postgresql at login:
+              ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+              Then to load postgresql now:
+              launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+              Or, if you do not want/need launchctl, you can just run:
+              pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+              ```
+              If you'd like your PostgreSQL server to start every time you boot up your machine, run
+              ```
+              $ ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+              ```
+              Reboot your machine and use the ```ps``` command to verify that the PostgreSQL server is running.
+              ```
+              $ ps ax | grep sql
+              254   ??  S      0:00.56 /usr/local/opt/postgresql/bin/postgres -D /usr/local/var/postgres -r
+              /usr/local/var/postgres/server.log
+              49408 s004  R+     0:00.00 grep sql
+              ```
+
+            </script>
+          </section>
+          <section data-markdown data-background="#5e2750">
+            ## This slide intentionally left blank.
+
+            [prev](#/16/1) | ubuntu | [next](#/21/1)
+          </section>
+          <section data-background="#00198f">
+            <h2>PostgreSQL</h2>
+            <p>
+              <a href="http://www.enterprisedb.com/products-services-training/pgdownload#windows">Download</a>
+              PostgreSQL 9.3.X.
+              <img src="images/Windows-PostgreSQL.png" width="667" height="528" alt="PostgreSQL download" />
+            </p>
+
+            <a href="#/16/2"> prev</a> | windows | <a href="#/18/2">next</a>
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown data-background="#ffd500">
+            <script type="text/template">
+              Alternatively, if you want to manually start and stop your PostgreSQL server as needed, you'll run
+              the commands
+              ```
+              $ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+              ```
+              and
+              ```
+              $ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop
+              ```
+              at the appropriate times.
+            </script>
+          </section>
+          <section data-markdown data-background="#5e2750">
+            ## This slide intentionally left blank.
+
+            [prev](#/16/1) | ubuntu | [next](#/21/1)
+          </section>
+          <section data-background="#00198f">
+            <h2>PostgreSQL & PostGIS</h2>
+
+            <p>
+              Run the installer. When it completes, use Stack Builder to install PostGIS 2.1
+            </p>
+
+            <p><img src="images/Windows-Stack-Builder.png" width="667" height="528" alt="PostgreSQL download"></p>
+
+            <a href="#/17/2"> prev</a> | windows | <a href="#/19/2">next</a>
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## osm2pgsql
+              OSM data comes in two formats, XML and PBF (Protocolbuffer Binary Format). The OpenStreetMap Wiki [tells us](http://wiki.openstreetmap.org/wiki/PBF_Format):
+
+              > [PBF] is primarily intended as an alternative to the XML format. It is about half of the size of a gzipped planet and about 30% smaller than a bzipped planet. It is also about 5x faster to write than a gzipped planet and 6x faster to read than a gzipped planet. The format was designed to support future extensibility and flexibility.
+
+              We can get behind that.
+            </script>
+          </section>
+          <section data-markdown data-background="#5e2750">
+            ## This slide intentionally left blank.
+
+            [prev](#/16/1) | ubuntu | [next](#/21/1)
+          </section>
+          <section data-background="#00198f">
+            <h2>node.js</h2>
+
+            <p>
+              <a href="http://nodejs.org/download/">Download</a> and install node.js.
+            </p>
+
+            <p><img src="images/Windows-node.png" width="667" height="528" alt="node.js download"></p>
+
+            <a href="#/18/2"> prev</a> | windows | <a href="#/21/2">next</a>
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## osm2pgsql
+              Install the protobuf-c library and osm2pgsql via Homebrew. Use your Terminal program.
+              ```
+              $ brew install protobuf-c
+
+              [...]
+
+              /usr/local/Cellar/protobuf-c/0.15: 12 files, 376K, built in 27 seconds
+              $ brew install osm2pgsql --with-protobuf-c=$HOMEBREW_PREFIX/opt/protobuf-c
+
+              [...]
+
+              /usr/local/Cellar/osm2pgsql/0.82.0: 9 files, 332K, built in 32 seconds
+              $
+              ```
+            </script>
+          </section>
+          <section data-markdown data-background="#5e2750">
+            ## This slide intentionally left blank.
+
+            [prev](#/16/1) | ubuntu | [next](#/21/1)
+          </section>
+          <section data-markdown data-background="#00198f">
+            ## This slide intentionally left blank.
+
+            [prev](#/18/2) | windows | [next](#/21/2)
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>TileMill</h2>
+            <p>
+              <a href="https://www.mapbox.com/tilemill/">Download</a> and install TileMill
+              from MapBox.
+              <img src="images/TileMill-Download.png" width="768" height="528" alt="TileMill download" />
+            </p>
+          </section>
+          <section data-markdown data-background="#5e2750">
+            ## This slide intentionally left blank.
+
+            [prev](#/16/1) | ubuntu | [next](#/22)
+          </section>
+          <section data-background="#00198f">
+            <h2>TileMill</h2>
+            <p>
+              <a href="https://www.mapbox.com/tilemill/">Download</a> and install TileMill
+              from MapBox.
+              <img src="images/Windows-TileMill.png" width="768" height="528" alt="TileMill download" />
+            </p>
+
+            <a href="#/19/2"> prev</a> | windows | <a href="#/22">next</a>
+          </section>
+        </section>
+
+        <section data-transition="zoom" data-background="images/Map-nik-cake-osm-7.png">
+          <div class="overphoto">
+            <h2>Okay, let's bake some tiles!</h2>
+            <div><small>Image </small><img class="overphoto no-border" src="images/cc-by-sa-80x15.png" width="80" height="15" alt="CC BY SA"><span><small> <a href="http://wiki.openstreetmap.org/w/images/b/b2/Map-nik-cake-osm-7.png">OpenStreetMap Wiki</a></small></span></div>
+          </div>
+        </section>
+
+        <section data-transition="zoom" data-markdown>
+          <script type="text/template">
+            # Let the workshop commence
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            # II. The back end
+          </script>
+        </section>
+
+        <section>
+          <h2>OpenStreetMap data</h2>
+          <p>You have several options.</p>
+          <ul>
+            <li class="fragment">
+              the whole planet from <a href="http://planet.osm.org/">Planet OSM</a>. Set aside a week or more to
+              download and import.
+            </li>
+            <li class="fragment">
+              <em>metro extracts</em>
+              <ul>
+                <li>from <a href="https://mapzen.com/metro-extracts/">Mapzen</a>. These supercede those previously maintained by <a href="http://metro.teczno.com/">Michal Migurski</a>. Updated weekly.</li>
+                <li>from <a href="http://download.geofabrik.de/">Geofabrick GmbH</a>. Updated daily.</li>
+                <li>from <a href="http://download.bbbike.org/osm/">BBBike.org</a>. Updated weekly.</li>
+              </ul>
+            </li>
+            <li class="fragment">
+              a customizable area export from <a href="http://www.openstreetmap.org/export">OpenStreetMap</a>.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Mapzen's metro extracts</h2>
+          <p>
+            Mapzen <a href="https://mapzen.com/metro-extracts/">offers hundreds of metro extracts</a>, and you
+            can <a href="http://erictheise.com/blog/2014/08/30/mapzens-openstreetmap-metro-extracts">easily request that
+            they add a new one</a>.<br />
+            Download the <a href="https://s3.amazonaws.com/metro-extracts.mapzen.com/portland.osm.pbf"><em>OSM
+            PBF file</em></a> for <em>Portland</em> (Oregon).
+            <img src="images/Mapzen-Portland.png" width="768" height="528" alt="Mapzen Portland extract" />
+          </p>
+        </section>
+
+        <section>
+          <h2>Creating a spatially-enabled database</h2>
+          <img src="images/PostGIScreate.png" width="768" height="480" alt="Creating spatially-enabled databases" />
+          <p>
+            PostGIS docs tell you how to spatially-enable one database.<br />
+            #ProTip: create a spatially-enabled <em>template</em>.
+          </p>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Creating a spatially-enabled template
+            Use `psql` to create, connect to, & spatially-enable the template.
+            ```
+            $ psql postgres
+            psql (9.3.5)
+            Type "help" for help.
+
+            postgres=> CREATE DATABASE template_postgis;
+            CREATE DATABASE
+            postgres=> \c template_postgis
+            template_postgis=# CREATE EXTENSION postgis;
+            CREATE EXTENSION
+            template_postgis=# CREATE EXTENSION postgis_topology;
+            CREATE EXTENSION
+            template_postgis=# CREATE EXTENSION hstore;
+            CREATE EXTENSION
+            UPDATE pg_database SET datistemplate = true WHERE datname='template_postgis';
+            UPDATE pg_database SET datallowconn = false WHERE datname='template_postgis';
+            ```
+            Create a new database from your template called <em>portland_from_osm</em>.
+            ```
+            template_postgis=# CREATE DATABASE portland_from_osm TEMPLATE template_postgis;
+            template_postgis=# \q
+            ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## osm2pgsql
+            Import the OSM PBF file into the database we just created.
+            ```
+            $ osm2pgsql -H localhost --hstore-all -d portland_from_osm ~/Downloads/portland.osm.pbf
+            osm2pgsql SVN version 0.82.0 (64bit id space)
+
+            Using projection SRS 900913 (Spherical Mercator)
+            Setting up table: planet_osm_point
+            NOTICE:  table "planet_osm_point" does not exist, skipping
+            NOTICE:  table "planet_osm_point_tmp" does not exist, skipping
+            Setting up table: planet_osm_line
+
+            [...]
+
+            Creating indexes on  planet_osm_line finished
+            All indexes on  planet_osm_line created  in 7s
+            Completed planet_osm_line
+
+            Osm2pgsql took 28s overall
+            $
+            ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## What'd we get? & How Much?
+            The tables starting with *planet\_osm\_* were created by the import. (The views and *spatial\_ref\_sys*
+            table come courtesy PostGIS.)
+            ```
+            $ psql portland_from_osm
+            psql (9.3.5)
+            Type "help" for help.
+
+            portland_from_osm=# \d
+            List of relations
+            Schema |        Name        | Type  |   Owner
+            --------+--------------------+-------+------------
+            public | geography_columns  | view  | postgres
+            public | geometry_columns   | view  | postgres
+            public | planet_osm_line    | table | erictheise
+            public | planet_osm_point   | table | erictheise
+            public | planet_osm_polygon | table | erictheise
+            public | planet_osm_roads   | table | erictheise
+            public | raster_columns     | view  | postgres
+            public | raster_overviews   | view  | postgres
+            public | spatial_ref_sys    | table | postgres
+            (9 rows)
+
+            portland_FROM_osm=# SELECT COUNT(*) FROM planet_osm_point;
+             count
+            -------
+             47925
+            (1 row)
+
+            portland_FROM_osm=# SELECT COUNT(*) FROM planet_osm_line;
+             count
+            --------
+             136969
+            (1 row)
+
+            portland_FROM_osm=# SELECT COUNT(*) FROM planet_osm_polygon;
+             count
+            -------
+             27911
+            (1 row)
+
+            portland_FROM_osm=# SELECT COUNT(*) FROM planet_osm_roads;
+             count
+            -------
+             15418
+            (1 row)
+            ```
+          </script>
+        </section>
+
+        <section>
+          <h2>OpenStreetMap schema</h2>
+          <p>
+            Four <a href="http://wiki.openstreetmap.org/wiki/Elements">elements</a> are central to OpenStreetMap's
+            data model:
+            <ul>
+              <li class="fragment"><em>nodes</em>: points. They may be actual points of interest or parts of ways.</li>
+              <li class="fragment"><em>ways</em>: linear features (roads, rivers) and area boundaries ("closed ways": forests,
+                buildings).</li>
+              <li class="fragment"><em>relations</em>: multi-purpose data structures that document relationships between two or
+                more elements.</li>
+              <li class="fragment">
+                <em>tags</em>: key/value pairs, ideally following community
+                <a href="http://wiki.openstreetmap.org/wiki/Map_Features">conventions</a>.
+              </li>
+            </ul>
+          </p>
+          <p>
+            <span class="fragment fade-in">
+              <code>osm2pgsql</code> massages these elements to<br />create tables suitable for rendering.
+            </span>
+          </p>
+        </section>
+
+        <section>
+          <h2>osm2pgsql schema</h2>
+          <p>
+
+          <ul>
+            <li><code>planet_osm_point</code>: contains all imported nodes with tags.</li>
+            <li><code>planet_osm_line</code>: contains all imported ways</li>
+            <li><code>planet_osm_polygon</code>: contains all imported polygons..</li>
+            <li>
+              <code>planet_osm_roads</code>: contains a subset of <code>planet_osm_line</code> suitable for rendering
+              at low zoom levels.
+            </li>
+          </ul>
+          </p>
+          <p class="fragment fade-in">
+            <a href="http://wiki.openstreetmap.org/wiki/Osm2pgsql/schema">More detail</a> is available.
+          </p>
+          <p class="fragment fade-in">
+            Let's try and make this data visible.
+          </p>
+        </section>
+
+        <section>
+          <h2>TileMill</h2>
+          <p>
+            Launch TileMill and create a New Project.
+          </p>
+          <img src="images/TileMill-NewProject.png" width="768" height="528" alt="TileMill - New Project" />
+        </section>
+
+        <section>
+          <h2>TileMill</h2>
+          <p>
+            Select the project, then pan and zoom to Portland. Add a PostGIS layer for lines. (Lines:
+            immediate gratification.)
+          </p>
+          <img src="images/TileMill-NewLayer-Line-Screen.png" width="768" height="528" alt="TileMill - Line Layer" />
+        </section>
+
+        <section>
+          <h2>Whoa. Interesting.</h2>
+          <img src="images/TileMill-NewLayer-Line-Result.png" width="768" height="528" alt="TileMill - Line Layer" />
+          <p class="fragment fade-in">
+            Can I get a close-up of that?
+          </p>
+        </section>
+
+        <section>
+          <h2>Not very discriminating.</h2>
+          <img src="images/TileMill-NewLayer-Line-Result-Zoom12.png" width="768" height="528" alt="TileMill - Line Layer" />
+          <p class="fragment fade-in">
+            Time to look at tags. SQL and tags. And MSS.
+          </p>
+        </section>
+
+        <section>
+          <h2>Tuning.</h2>
+          <p>
+            Delete <code>#planetosmline</code>, add a PostGIS layer using:
+
+            <pre><code>
+( SELECT * FROM planet_osm_line
+  WHERE highway IN ('motorway', 'primary', 'secondary', 'tertiary', 'service', 'residential')
+) AS roads
+            </code></pre>
+          </p>
+          <img src="images/TileMill-NewLayer-Line-Screen-SQL.png" width="768" height="528" alt="TileMill - #roads.line Layer" />
+        </section>
+
+        <section>
+          <h2>Tuning. MSS.</h2>
+
+          <img src="images/TileMill-NewLayer-Line-Result-SQL.png" width="768" height="528" alt="TileMill - #roads.line Layer" />
+        </section>
+
+        <section>
+          <h2>You might say we're drinking from a firehose.</h2>
+          <p>We need to be selective about what we suck down from our OSM database. Our basic dilemma is</p>
+          <ul>
+            <li class="fragment">which entities to show,</li>
+            <li class="fragment">at what zoom level, and</li>
+            <li class="fragment">how to style them</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Roads.mss</h2>
+          <p>Delete the <code>#planetosmline</code> & <code>#roads</code> blocks from <code>style.mss</code>.
+            Click on the <code>+</code> to create a new Carto stylesheet, <code>roads.mss</code>. Into it,
+            copy and paste this block:
+          </p>
+          <pre><code>
+@motorway:    #ff8c00;
+@primary:     #ffd700;
+@secondary:   #555555;
+@tertiary:    #676767;
+@service:     #888888;
+@residential: #999999;
+
+#roads.line {
+  [highway = 'motorway'] {
+    [zoom >=  9] { line-width:2; line-color:@motorway; }
+    [zoom >= 10] { line-width:3; line-color:@motorway; }
+    [zoom >= 11] { line-width:3.5; line-color:@motorway; }
+    [zoom >= 12] { line-width:4; line-color:@motorway; }
+    [zoom >= 13] { line-width:4.5; line-color:@motorway; }
+    [zoom >= 14] { line-width:5; line-color:@motorway; }
+    [zoom >= 15] { line-width:6; line-color:@motorway; }
+    [zoom >= 16] { line-width:8; line-color:@motorway; }
+    [zoom >= 17] { line-width:10; line-color:@motorway; }
+    [zoom >= 18] { line-width:12; line-color:@motorway; }
+  }
+
+  [highway = 'primary'] {
+    [zoom >=  9] { line-width:2; line-color:@primary; }
+    [zoom >= 10] { line-width:3; line-color:@primary; }
+    [zoom >= 11] { line-width:3.5; line-color:@primary; }
+    [zoom >= 12] { line-width:4; line-color:@primary; }
+    [zoom >= 13] { line-width:4.5; line-color:@primary; }
+    [zoom >= 14] { line-width:5; line-color:@primary; }
+    [zoom >= 15] { line-width:6; line-color:@primary; }
+    [zoom >= 16] { line-width:8; line-color:@primary; }
+    [zoom >= 17] { line-width:10; line-color:@primary; }
+    [zoom >= 18] { line-width:12; line-color:@primary; }
+  }
+
+  [highway = 'secondary'] {
+    [zoom >=  9] { line-width:0.75; line-color:@secondary; }
+    [zoom >= 10] { line-width:2; line-color:@secondary; }
+    [zoom >= 11] { line-width:2.5; line-color:@secondary; }
+    [zoom >= 12] { line-width:3; line-color:@secondary; }
+    [zoom >= 13] { line-width:3.5; line-color:@secondary; }
+    [zoom >= 14] { line-width:4; line-color:@secondary; }
+    [zoom >= 15] { line-width:5; line-color:@secondary; }
+    [zoom >= 16] { line-width:6; line-color:@secondary; }
+    [zoom >= 17] { line-width:7; line-color:@secondary; }
+    [zoom >= 18] { line-width:9; line-color:@secondary; }
+  }
+
+  [highway = 'tertiary'] {
+    [zoom >=  9] { line-width:0.25; line-color:@tertiary; }
+    [zoom >= 10] { line-width:1; line-color:@tertiary; }
+    [zoom >= 11] { line-width:1.5; line-color:@tertiary; }
+    [zoom >= 12] { line-width:2; line-color:@tertiary; }
+    [zoom >= 13] { line-width:2.5; line-color:@tertiary; }
+    [zoom >= 14] { line-width:3; line-color:@tertiary; }
+    [zoom >= 15] { line-width:4; line-color:@tertiary; }
+    [zoom >= 16] { line-width:5; line-color:@tertiary; }
+    [zoom >= 17] { line-width:6; line-color:@tertiary; }
+    [zoom >= 18] { line-width:8; line-color:@tertiary; }
+  }
+
+  [highway = 'service'] {
+    [zoom >= 10] { line-width:.5; line-color:@service; }
+    [zoom >= 11] { line-width:.3; line-color:@service; }
+    [zoom >= 12] { line-width:.4; line-color:@service; }
+    [zoom >= 13] { line-width:.6; line-color:@service; }
+    [zoom >= 14] { line-width:.8; line-color:@service; }
+    [zoom >= 15] { line-width:1.2; line-color:@service; }
+    [zoom >= 16] { line-width:2; line-color:@service; }
+    [zoom >= 17] { line-width:4; line-color:@service; }
+    [zoom >= 18] { line-width:6; line-color:@service; }
+  }
+
+  [highway = 'residential'] {
+    [zoom >= 10] { line-width:.2; line-color:@residential; }
+    [zoom >= 11] { line-width:.3; line-color:@residential; }
+    [zoom >= 12] { line-width:.4; line-color:@residential; }
+    [zoom >= 13] { line-width:.6; line-color:@residential; }
+    [zoom >= 14] { line-width:.8; line-color:@residential; }
+    [zoom >= 15] { line-width:1.2; line-color:@residential; }
+    [zoom >= 16] { line-width:2; line-color:@residential; }
+    [zoom >= 17] { line-width:4; line-color:@residential; }
+    [zoom >= 18] { line-width:6; line-color:@residential; }
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>MSS. Tags. Zoom.</h2>
+          <img src="images/TileMill-NewLayer-Line-Screen-MSS.png" width="768" height="528" alt="TileMill - #roads.line Layer" />
+          <p class="fragment fade-in">
+            Let's lay in the Willamette.
+          </p>
+        </section>
+
+        <section>
+          <h2>Water-area.</h2>
+          <p>
+            Add a PostGIS layer using:
+          </p>
+
+          <pre><code>
+( SELECT way, "natural", waterway, landuse, name
+  FROM planet_osm_polygon
+  WHERE waterway IN ('dock', 'riverbank', 'canal') OR
+        landuse IN ('reservoir', 'basin') OR
+        "natural" IN ('lake', 'water', 'land', 'glacier', 'mud')
+) AS waterway
+          </code></pre>
+
+          <img src="images/TileMill-NewLayer-Water-Areas-Screen-SQL.png" width="768" height="528" alt="TileMill - #water-area Layer" />
+        </section>
+
+        <section>
+          <h2>Water.mss</h2>
+          <p>
+            Click on the <code>+</code> to create a new Carto stylesheet, <code>water.mss</code>. Into it,
+            copy and paste this block:
+          </p>
+          <pre><code>
+@water-color: #16b;
+
+#water-areas {
+  [waterway = 'dock'],
+  [waterway = 'canal'] {
+    [zoom >= 9]::waterway {
+      polygon-fill: @water-color;
+    }
+  }
+
+  [landuse = 'basin'][zoom >= 7]::landuse {
+    polygon-fill: @water-color;
+  }
+
+  [natural = 'lake']::natural,
+  [natural = 'water']::natural,
+  [landuse = 'reservoir']::landuse,
+  [waterway = 'riverbank']::waterway {
+    [zoom >= 6] {
+      polygon-fill: @water-color;
+    }
+  }
+
+}
+        </code></pre>
+        </section>
+
+        <section>
+          <h2>Forty feet deep and rising.</h2>
+          <p>
+            Do drag the <code>#water-areas</code> layer below <code>#roads.line</code>.
+          </p>
+
+          <img src="images/TileMill-NewLayer-Water-Areas-Result.png" width="768" height="528" alt="TileMill - #water-area Layer" />
+          <p class="fragment fade-in">
+            Let's pick up streams and creeks, too.
+          </p>
+        </section>
+
+        <section>
+          <h2>Water-lines.</h2>
+          <p>
+            Add a PostGIS layer using:
+          </p>
+
+          <pre><code>
+(SELECT way, waterway, lock, name, case WHEN tunnel IN ('yes','culvert') THEN 'yes' ELSE 'no' END AS int_tunnel, 'no' AS bridge
+FROM planet_osm_line
+WHERE waterway IN ('weir', 'river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
+AND (bridge IS NULL OR bridge NOT IN ('yes','aqueduct'))
+) AS water_lines
+          </code></pre>
+          <img src="images/TileMill-NewLayer-Water-Lines-Screen-SQL.png" width="768" height="528" alt="TileMill - #water.line Layer" />
+        </section>
+
+        <section>
+          <h2>Water.mss</h2>
+          <p>
+            Append this block into <code>water.mss</code>:
+          </p>
+
+          <pre><code>
+.water-lines {
+  [waterway = 'weir'][zoom >= 15] {
+    line-color: #aaa;
+    line-width: 2;
+    line-join: round;
+    line-cap: round;
+  }
+
+  [waterway = 'canal'][zoom >= 12],
+  [waterway = 'river'][zoom >= 12] {
+    [bridge = 'yes'] {
+      [zoom >= 14] {
+        bridgecasing/line-color: black;
+        bridgecasing/line-join: round;
+        bridgecasing/line-width: 6;
+        [zoom >= 15] { bridgecasing/line-width: 7; }
+        [zoom >= 17] { bridgecasing/line-width: 11; }
+        [zoom >= 18] { bridgecasing/line-width: 13; }
+      }
+    }
+
+    line-color: @water-color;
+    line-width: 2;
+    [zoom >= 13] { line-width: 3; }
+    [zoom >= 14] { line-width: 5; }
+    [zoom >= 15] { line-width: 6; }
+    [zoom >= 17] { line-width: 10; }
+    [zoom >= 18] { line-width: 12; }
+    line-cap: round;
+    line-join: round;
+    [int_tunnel = 'yes'] {
+      line-dasharray: 4,2;
+      line-cap: butt;
+      line-join: miter;
+      a/line-color: #f3f7f7;
+      a/line-width: 1;
+      [zoom >= 14] { a/line-width: 2; }
+      [zoom >= 15] { a/line-width: 3; }
+      [zoom >= 17] { a/line-width: 7; }
+      [zoom >= 18] { a/line-width: 8; }
+    }
+  }
+
+  [waterway = 'stream'],
+  [waterway = 'ditch'],
+  [waterway = 'drain'] {
+    [zoom >= 13] {
+      [bridge = 'yes'] {
+        [zoom >= 14] {
+        bridgecasing/line-color: black;
+        bridgecasing/line-join: round;
+        bridgecasing/line-width: 3;
+        [waterway = 'stream'][zoom >= 15] { bridgecasing/line-width: 4; }
+        bridgeglow/line-color: white;
+        bridgeglow/line-join: round;
+        bridgeglow/line-width: 2;
+        [waterway = 'stream'][zoom >= 15] { bridgeglow/line-width: 3; }
+        }
+      }
+      line-width: 1;
+      line-color: @water-color;
+      [waterway = 'stream'][zoom >= 15] {
+        line-width: 2;
+      }
+      [int_tunnel = 'yes'][zoom >= 15] {
+        line-width: 2.5;
+        [waterway = 'stream'] { line-width: 3.5; }
+        line-dasharray: 4,2;
+        a/line-width: 1;
+        [waterway = 'stream'] { a/line-width: 2; }
+        a/line-color: #f3f7f7;
+      }
+    }
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Zoom in to see some creeks.</h2>
+          <p>
+            Drag the <code>#water-lines</code> layer below <code>#water-areas</code>.
+          </p>
+
+          <img src="images/TileMill-NewLayer-Water-Lines-Result.png" width="768" height="528" alt="TileMill - #water-lines Layer" />
+        </section>
+
+        <section>
+          <h2>Labels</h2>
+          <p>
+            Each of the <code>planet_osm_</code> tables has a <code>name</code> field, and we need to tap into those
+            to begin rendering labels.
+          </p>
+
+          <pre><code>
+( SELECT way, CASE WHEN SUBSTR(highway, length(highway)-3, 4) = 'link' THEN substr(highway,0,length(highway)-4) ELSE highway END, name
+FROM planet_osm_line
+WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link',
+'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'proposed')
+AND name IS NOT NULL
+) AS roads_text_name
+          </code></pre>
+
+          <img src="images/TileMill-NewLayer-Roads-Text-Name-Screen-SQL.png" width="768" height="528" alt="TileMill - #roads-text-name Layer" />
+        </section>
+
+        <section>
+          <h2>Style.mss</h2>
+          <p>
+            Prepend this block into <code>style.mss</code>:
+          </p>
+
+          <pre><code>
+@book-fonts: "DejaVu Sans Book", "Arundina Sans Regular", "Padauk Regular", "Khmer OS Metal Chrieng Regular",
+             "Mukti Narrow Regular", "gargi Medium", "TSCu_Paranar Regular", "Tibetan Machine Uni Regular", "Mallige Normal",
+             "Droid Sans Fallback Regular", "Unifont Medium", "unifont Medium";
+          </code></pre>
+        </section>
+
+        <section>
+        <h2>Road.mss</h2>
+        <p>
+          Append this block into <code>road.mss</code>:
+        </p>
+
+        <pre><code>
+#roads-text-name {
+  [highway = 'motorway'],
+  [highway = 'trunk'],
+  [highway = 'primary'] {
+    [zoom >= 13] {
+      text-name: "[name]";
+      text-size: 8;
+      text-fill: black;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @book-fonts;
+      text-halo-radius: 0;
+    }
+    [zoom >= 14] {
+      text-size: 9;
+    }
+    [zoom >= 15] {
+      text-size: 10;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+
+  [highway = 'secondary'] {
+    [zoom >= 13] {
+    text-name: "[name]";
+    text-size: 8;
+    text-fill: black;
+    text-spacing: 300;
+    text-clip: false;
+    text-placement: line;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    }
+    [zoom >= 14] {
+      text-size: 9;
+    }
+    [zoom >= 15] {
+      text-size: 10;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+
+  [highway = 'tertiary'],
+  [highway = 'tertiary_link'] {
+    [zoom >= 14] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: black;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+
+  [highway = 'proposed'],
+  [highway = 'construction'] {
+    [zoom >= 13] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: black;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-halo-radius: 1;
+      text-face-name: @book-fonts;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+
+  [highway = 'residential'],
+  [highway = 'unclassified'],
+  [highway = 'road'] {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 8;
+      text-fill: black;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-halo-radius: 1;
+      text-face-name: @book-fonts;
+    }
+    [zoom >= 16] {
+      text-size: 9;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+      text-spacing: 400;
+    }
+  }
+
+  [highway = 'raceway'],
+  [highway = 'service'] {
+    [zoom >= 16] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: black;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-halo-radius: 1;
+    text-face-name: @book-fonts;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+
+  [highway = 'living_street'],
+  [highway = 'pedestrian'] {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 8;
+      text-fill: black;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-halo-radius: 1;
+    text-face-name: @book-fonts;
+    }
+    [zoom >= 16] {
+      text-size: 9;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+}
+        </code></pre>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Zoom in, pan around, to see some labels.
+
+            <img src="images/TileMill-NewLayer-Roads-Text-Name-Result.png" width="768" height="528" alt="TileMill - #roads-text-name Layer" />
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## openstreetmap-carto
+
+            Until fairly recently, map rendering at [openstreetmap.org](openstreetmap.org) was done directly with
+            [mapnik](https://github.com/mapnik/mapnik/wiki/About-Mapnik) and [XML
+            configuration](http://svn.openstreetmap.org/applications/rendering/mapnik/archive/osm-template.xml). The switch to
+            Andy Allan's _multi-year-and-still-ongoing_ [openstreetmap-carto](https://github.com/gravitystorm/openstreetmap-carto)
+            happened in Aug 2013, and you might consider using it as a launchpad for your own real world maps.
+
+            MapBox provides a [CartoCSS Reference](https://www.mapbox.com/carto/api/2.3.0/)
+
+            [Cascadenik](http://teczno.com/cascadenik/doc/) fed into the development of CartoCSS.
+
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Exporting tiles.
+
+            Choose <code>Export</code>, <code>MBTiles</code>. Set the Zoom slider to <code>9-16</code>, click to set
+            Center, then <code>shift+drag</code> to create Bounds. Wait.
+
+            <img src="images/TileMill-Export.png" width="768" height="528" alt="TileMill - Export" />
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## MBTiles
+
+            MBTiles is an [open specification](https://github.com/mapbox/mbtiles-spec) for storing map tiles in a SQLite
+            database. Some tile servers ([TileStream](https://github.com/mapbox/tilestream),
+            [TileStache](http://tilestache.org/), [others](https://github.com/mapbox/mbtiles-spec/wiki/Implementations)) can
+            serve this format directly, or component tiles may be extracted from an MBTiles file using
+            [mbutil](https://github.com/mapbox/mbutil).
+
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Brute force: mbutil
+
+            Any webserver can serve tiles as individual image files, organized into `z/x/y` subdirectories. Worst case:
+            they can even be delivered using a `file:` url from the filesystem.
+
+            ```
+            $ easy_install mbutil
+            Searching for mbutil
+            Reading https://pypi.python.org/simple/mbutil/
+
+            [...]
+
+            Finished processing dependencies for mbutil
+            $ mb-util ~/Documents/MapBox/export/portland_from_osm.mbtiles ~/Projects/erictheise/geostack-tiles/tiles
+            DEBUG:mbutil.util:Exporting MBTiles to disk
+            DEBUG:mbutil.util:/Users/erictheise/Documents/MapBox/export/portland_from_osm.mbtiles --> /Users/erictheise/Projects/erictheise/geostack-tiles/tiles
+            flipping
+            INFO:mbutil.util:1 / 55970 tiles exported
+            flipping
+            INFO:mbutil.util:2 / 55970 tiles exported
+            flipping
+
+            [...]
+
+            INFO:mbutil.util:55970 / 55970 tiles exported
+            $ cd ~/Projects/erictheise/geostack-tiles/
+            $ python -m SimpleHTTPServer 8887
+            Serving HTTP on 0.0.0.0 port 8887 ...
+            ```
+
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## A locally-served tile.
+
+            Look through your `tiles` subdirectories and<br />see if you can serve a tile, any tile. Success.
+
+            <img src="images/TileMill-Export-mbutil.png" width="768" height="528" alt="TileMill - mbutil" />
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Alternatively: TileStream
+
+            [TileStream](https://github.com/mapbox/tilestream) is MapBox's high-performance map tile server for MBTiles.
+            Their own hosting service is based on TileStream internals, though it has many additional features.
+
+            Clone it from GitHub:
+
+            ```
+            $ cd ~/Projects/mapbox/tilestream/
+            $ git clone git@github.com:mapbox/tilestream.git
+            Cloning into 'tilestream'...
+            remote: Counting objects: 3142, done.
+
+            [...]
+
+            $ npm install
+            npm WARN package.json tilestream@1.1.0 'repositories' (plural) Not supported.
+            npm WARN package.json Please pick one as the 'repository' field
+            npm http GET https://registry.npmjs.org/step
+            npm http GET https://registry.npmjs.org/bones/1.3.29
+
+            [...]
+
+            $
+            ```
+
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## TileStream
+
+            The first time you run TileStream
+
+            ```
+            $ ./index.js
+            Started [Server Tile].
+            Started [Server Core:8888].
+            ```
+
+            it'll create a `~/Documents/MapBox/tiles/` directory.<br />Stop TileStream, copy your exported MBTiles file from
+            `~/Documents/MapBox/export/` into that directory,.<br />then restart TileStream.
+
+            ```
+            ^C
+            $
+            $ cp -p ~/Documents/MapBox/export/portland_from_osm.mbtiles ~/Documents/MapBox/tiles
+            $ ./index.js
+            Started [Server Tile].
+            Started [Server Core:8888].
+            ```
+
+            [More detail](https://github.com/mapbox/tilestream#configuration) is available.
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## A locally-served MBTile.
+
+            <img src="images/TileStream.png" width="768" height="528" alt="TileStream" />
+          </script>
+        </section>
+
+        <section data-transition="zoom" data-markdown>
+          <script type="text/template">
+            # Intermission
+
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          # III. The front end
+
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Leaflet
+
+            [Leaflet](http://leafletjs.com/) is a relatively recent JavaScript mapping library whose
+            lightweight size and [ease-of-use](http://leafletjs.com/reference.html) has led to remarkably
+            fast and wide adoption, and displacement of [OpenLayers 2](http://openlayers.org/two/).
+
+            (There's a great deal of interest in [OpenLayers 3](http://openlayers.org/), released Sep 2014. Also in Sep
+            2014, Leaflet's creator, Vladimir Agafonkin, gave a talk about
+            [_The Future of Leaflet_](https://speakerdeck.com/mourner/future-of-leaflet/).)
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## geostack-map-page
+
+            Clone my [`geostack-map-pages`](https://github.com/erictheise/geostack-map-pages) repository from GitHub:
+
+            ```
+            $ cd ~/Projects/erictheise/
+            $ git clone git@github.com:erictheise/geostack-map-pages.git
+            Cloning into 'geostack-map-pages'...
+            remote: Counting objects: 34, done.
+            remote: Compressing objects: 100% (27/27), done.
+            remote: Total 34 (delta 6), reused 29 (delta 4)
+            Receiving objects: 100% (34/34), 7.37 MiB | 467.00 KiB/s, done.
+            Resolving deltas: 100% (6/6), done.
+            Checking connectivity... done
+            $
+            ```
+
+          </script>
+        </section>
+
+        <section>
+          <h2>static.html</h2>
+          <p>
+            Let's look at the contents of <code>static.html</code>.
+          </p>
+          <pre><code data-trim contenteditable>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  <title>Static Data with Leaflet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/leaflet.css" />
+  <script src="js/leaflet.js"></script>
+&lt;/head&gt;
+&lt;body&gt;
+<div id="map" style="width: 800px; height: 600px"></div>
+
+&lt;script&gt;
+var
+  tileUrl,
+  map = L.map('map').setView([45.521969, -122.683424], 13);
+
+// @todo: Pick a tileserver by uncommenting one of these values for tileUrl:
+//
+// To use the MapBox example tiles:
+// tileUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+//
+// To use the Python SimpleHTTPServer you've set up on port 8887:
+// tileUrl = 'http://localhost:8887/tiles/{z}/{x}/{y}.png';
+//
+// To use the TileStream server you've set up on port 8888:
+tileUrl = 'http://localhost:8888/v2/portland_from_osm/{z}/{x}/{y}.png';
+//
+L.tileLayer(tileUrl, {
+  minZoom: 10,
+  maxZoom: 16,
+  attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+    'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+  id: 'examples.map-i86knfo3'
+  }).addTo(map);
+
+  L.marker([45.521969, -122.683424]).addTo(map)
+  .bindPopup(
+    '<b><a href="http://racionpdx.com/">Ración</a></b><br />' +
+    '1205 SW Washington St<br />Portland, OR'
+  );
+
+  var popup = L.popup();
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+          </code></pre>
+          <p>
+            Open it in your browser.
+          </p>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Points. Markers. Popups.
+
+            See the effects of `tileUrl`; also `minZoom`, `maxZoom`, and other
+            [map](http://leafletjs.com/reference.html#map-class), [marker](http://leafletjs.com/reference.html#marker),
+            and [popup](http://leafletjs.com/reference.html#popup) initializers.
+
+            <img src="images/Leaflet-Static.png" width="768" height="528" alt="Leaflet - Ración" />
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Added complexity. Structure. GeoJSON
+
+            [GeoJSON](http://geojson.org/geojson-spec.html#examples) is a format for encoding a variety of geographic
+            data structures. A GeoJSON object may represent a geometry, a feature, or a collection of features. GeoJSON
+            supports the following geometry types: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon,
+            and GeometryCollection. Features in GeoJSON contain a geometry object and additional properties, and a
+            feature collection represents a list of features.
+
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## A geojson object
+
+            A GeoJSON representation of Ración might be
+
+            ```
+{ "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -122.683424,
+      45.521969
+      ]
+  },
+  "properties": {
+    "name": "Ración",
+    "address": "1205 SW Washington St",
+    "city": "Portland",
+    "state": "OR",
+    "website": "http://racionpdx.com/",
+    "review_urls": {
+      "tripadvisor": "http://www.tripadvisor.com/Restaurant_Review-g52024-d3958419-Reviews-Racion_Portland_Or-Portland_Oregon.html",
+      "urbanspoon": "http://www.urbanspoon.com/r/24/1734565/restaurant/Downtown/Racion-Portland",
+      "yelp": "http://www.yelp.com/biz/raci%C3%B3n-portland"
+  }
+}
+            ```
+          </script>
+        </section>
+
+        <section data-markdown data-background="#ffd500">
+          <script type="text/template">
+            ## Caveat: Steer clear of Null Island
+
+            Leaflet's methods expect geographical coordinates as [`LatLng`](http://leafletjs.com/reference.html#latlng);
+            [GeoJSON's worldview](http://geojson.org/geojson-spec.html#positions) is that of a graph—plotting `x`, `y`
+            —so the format dictates longitude/latitude, not latitude/longitude.
+
+            <p class="fragment">
+              It's not a question of _if_ you will be stung by this, just _when_.
+            </p>
+
+            <p class="fragment">
+              #ProTip: When your data doesn't render as expected, zoom out and see if it's at 0°, 0° off the coast of
+              Africa; this is [Null Island](http://www.nullisland.com/geography.html), and lat/lon reversal is one likely
+              cause.
+            </p>
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## geostack-api
+
+            Let's generate some GeoJSON from our OpenStreetMap data. Clone my
+            [`geostack-api`](https://github.com/erictheise/geostack-api) repository from GitHub.
+
+            ```
+            $ cd ~/Projects/erictheise/
+            $ git clone git@github.com:erictheise/geostack-api.git
+            Cloning into 'geostack-api'...
+            remote: Counting objects: 1129, done.
+            remote: Compressing objects: 100% (894/894), done.
+            remote: Total 1129 (delta 157), reused 1102 (delta 130)
+            Receiving objects: 100% (1129/1129), 1.17 MiB | 471.00 KiB/s, done.
+            Resolving deltas: 100% (157/157), done.
+            Checking connectivity... done
+            $
+            ```
+
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## From Database to API
+
+            Let's look at the contents of `routes/amenities.js`.
+
+            ```
+            var express = require('express');
+            var router = express.Router();
+            var pg = require('pg');
+            var tags = {};
+
+            router.get('/', function(req, res) {
+              getAmenities(req.body, res);
+            });
+
+            function getAmenities(amenities, res) {
+              var conString = "pg://localhost/portland_from_osm";
+              var client = new pg.Client(conString);
+              client.connect();
+
+              var fc = {
+                "type": "FeatureCollection",
+                "features": []
+              };
+
+              var sql = "SELECT name, ST_AsGeoJSON(ST_TRANSFORM(way, 4326)) AS way, tags->'cuisine' AS cuisine " +
+                "FROM planet_osm_point " +
+                "WHERE amenity = 'restaurant' AND name IS NOT NULL;";
+
+              client.query(sql, function(err, result) {
+                result.rows.forEach(function(feature) {
+
+                  tags = feature.tags;
+
+                  var f = {
+                    "type": "Feature",
+                    "geometry": JSON.parse(feature.way),
+                    "properties": {
+                      "name": feature.name,
+                      "cuisine": feature.cuisine
+                    }
+                  };
+                  fc.features.push(f);
+                });
+
+                res.setHeader("Access-Control-Allow-Origin", "*")
+                res.send(fc);
+              });
+
+            }
+
+            module.exports = router;
+            ```
+
+            Note the PostgreSQL connection string in `conString`, the query in `sql`, the feature-by-feature
+            construction of the GeoJSON _FeatureCollection_, and the use of `res.setHeader` to allow [cross-origin
+            resource sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS).
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Express
+
+            [Express](http://expressjs.com/) is a lightweight web application framework for Node.js.
+
+            Prepare and start the server.
+
+            ```
+            $ cd geostack-api/
+            $ npm install
+            $ npm start
+
+            > geostack-api@0.0.0 start /Users/erictheise/Projects/erictheise/geostack-api
+            > node ./bin/www
+
+            ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## /
+
+            Visit the minimal [Express Welcome Page](http://localhost:3000/) at the server root to verify that
+            Express is running.
+
+            <img src="images/Express-Root.png" width="768" height="528" alt="Express - Root" />
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## /amenities
+
+            Visit [`/amenities`](http://localhost:3000/amenities) to verify that the API is sending back GeoJSON from
+            your database. (The [JSONView Chrome Extension](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc)
+            is pretty-printing the output in this screenshot.)
+
+            <img src="images/Express-Amenities.png" width="768" height="528" alt="Express - Amenities" />
+          </script>
+        </section>
+
+        <section>
+          <h2>dynamic.html</h2>
+          <p>
+            Let's look at the contents of <code>dynamic.html</code>.
+          </p>
+          <pre><code data-trim contenteditable>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  <title>Dynamic Data with Leaflet</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/leaflet.css" />
+  <script src="js/leaflet.js"></script>
+&lt;/head&gt;
+&lt;body&gt;
+<div id="map" style="width: 800px; height: 600px"></div>
+
+&lt;script&gt;
+  function initMap() {
+    var tileUrl;
+
+    // Note: the [Wikipedia page on Downtown Portland Oregon](http://en.wikipedia.org/wiki/Downtown_Portland)
+    // gives its location as 45.51935°N 122.67962°W. We'll center the map at that location with zoom level 12.
+    //
+    var map = L.map('map').setView([45.51935, -122.67962], 12);
+
+    // @todo: Pick a tileserver by uncommenting one of these values for tileUrl:
+    //
+    // To use the MapBox example tiles:
+    // tileUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+    //
+    // To use the Python SimpleHTTPServer you've set up on port 8887:
+    // tileUrl = 'http://localhost:8887/tiles/{z}/{x}/{y}.png';
+    //
+    // To use the TileStream server you've set up on port 8888:
+    tileUrl = 'http://localhost:8888/v2/portland_from_osm/{z}/{x}/{y}.png';
+    //
+    L.tileLayer(tileUrl, {
+      minZoom: 10,
+      maxZoom: 16,
+      attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      id: 'examples.map-i86knfo3'
+
+    }).addTo(map);
+
+    $.ajax({
+      url: 'http://localhost:3000/amenities',
+      dataType: 'json',
+      type: 'get'
+    }).done(function (data) {
+      var geojson = L.geoJson(data, {
+        pointToLayer: function (feature, latlng) {
+          var
+            fillColor,
+            fillOpacity = 0.75;
+
+          // Note: as this is a quick & dirty demo, fill colors have been assigned arbitrarily
+          // to the top 12 cuisines found tagged to restaurants in Sep 2014 OpenStreetMap
+          // data for Portland, OR. Any other cuisine, or restaurants that have not been tagged
+          // with a cuisine, get a dark gray fill color having low opacity. The color values
+          // come from the 12 data class/qualitative nature/Set3 at http://colorbrewer2.org/
+          //
+          // SELECT tags->'cuisine' AS cuisine, count(tags->'cuisine')
+          // FROM planet_osm_point
+          // WHERE amenity = 'restaurant'
+          // GROUP BY tags->'cuisine'
+          // ORDER BY count desc
+          // LIMIT 12;
+          //
+          // cuisine  | count
+          //----------+-------
+          // pizza    |    47
+          // mexican  |    42
+          // american |    32
+          // chinese  |    23
+          // thai     |    20
+          // japanese |    18
+          // italian  |    17
+          // burger   |    17
+          // sushi    |    16
+          // asian    |    11
+          // regional |     9
+          // sandwich |     8
+          //    (12 rows)
+          //
+          switch (feature.properties.cuisine) {
+            case 'pizza':
+              fillColor = '#8dd3c7';
+              break;
+            case 'mexican':
+              fillColor = '#ffffb3';
+              break;
+            case 'american':
+              fillColor = '#bebada';
+              break;
+            case 'chinese':
+              fillColor = '#fb8072';
+              break;
+            case 'thai':
+              fillColor = '#80b1d3';
+              break;
+            case 'japanese':
+              fillColor = '#fdb462';
+              break;
+            case 'italian':
+              fillColor = '#b3de69';
+              break;
+            case 'burger':
+              fillColor = '#fccde5';
+              break;
+            case 'sushi':
+              fillColor = '#d9d9d9';
+              break;
+            case 'asian':
+              fillColor = '#bc80bd';
+              break;
+            case 'regional':
+              fillColor = '#ccebc5';
+              break;
+            case 'sandwich':
+              fillColor = '#ffed6f';
+              break;
+            default:
+              fillColor = '#222';
+              fillOpacity = 0.1;
+              break;
+          }
+
+          var marker = L.circleMarker(latlng, {
+            radius: 6,
+            weight: 1,
+            color: "#000",
+            opacity: 1,
+            fillColor: fillColor,
+            fillOpacity: fillOpacity
+          });
+
+          map.on('load zoomend', function () {
+            var currentZoom = map.getZoom();
+            if (currentZoom < 13) {
+              marker.setRadius(6);
+            } else {
+              if (currentZoom < 15) {
+                marker.setRadius(9);
+              } else {
+                marker.setRadius(12);
+              }
+            }
+          });
+
+          return marker;
+        },
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup(
+            '<div class="center">' +
+              '<b>'+feature.properties.name+'</b>' +
+              '</div>'
+          );
+        }
+      }).addTo(map);
+    });
+
+  }
+
+  initMap();
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+          </code></pre>
+          <p>
+            Note the use of <a href="http://leafletjs.com/reference.html#geojson"><code>L.geoJson()</code></a>, the
+            <code>switch</code> statement to determine how to color each <code>circleMarker</code>, and the use of
+            <code>map.getZoom()</code> to set the radius of each <code>circleMarker</code>.
+          </p>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Styling by Properties and Zoom Level
+
+            Open `dynamic.html` in your browser.
+
+            Witness the combined effects of all that logic.
+
+            <img src="images/Leaflet-Dynamic.png" width="768" height="528" alt="Leaflet - Porque No?" />
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## So. What is it we have done?
+
+            <ol start="0">
+              <li class="fragment">braved the package managers and installed hella open source software</li>
+              <li class="fragment">downloaded _OpenStreetMap_ data and imported it into our databases</li>
+              <li class="fragment">used our databases with _TileMill_ to style and generate map tiles</li>
+              <li class="fragment">served many zoom levels worth of map tiles using _TileStream_ (or _Python_)</li>
+              <li class="fragment">created a _Node.js_ server that queried our databases and returned data over _http_
+                in _GeoJSON_ format</li>
+              <li class="fragment">used _Leaflet_ to style and layer Points of Interest over our map tiles</li>
+            </ol>
+            <p class="fragment">A Geostack.</p>
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Do try these at home
+
+            <ul>
+              <li class="fragment">
+
+                map additional tag values (e.g., _website_, _street address_). In the `geostack-api` project, modify
+                `/routes/amenities.js` to
+                <ol>
+                  <li>expand the query in the `sql` variable to pick up additional tags</li>
+                  <li>expand the GeoJSON properties in the `f` variable to surface these additional values</li>
+                </ol>
+                In the `geostack-map-pages` code, modify `dynamic.html` to consume and display additional values in the
+                `bindPopup` method.
+              </li>
+              <li class="fragment">create a legend for the cuisines</li>
+              <li class="fragment">work with an altogether different field/tag</li>
+              <li class="fragment">see what it's like working with an [altogether different mapping library](http://openlayers.org/)</li>
+            </ul>
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            # Fin
+
+            [Eric Theise](http://erictheise.com/) / [@erictheise](http://twitter.com/erictheise)
+
+          </script>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>

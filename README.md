@@ -13,10 +13,12 @@ application that, despite its simplicity, demonstrates
    that
  * the [Leaflet](http://leafletjs.com/) mapping library can display markers and popups for points of interest
 
-The workshop itself can be comfortably presented in about four hours, even allowing for some exploratory _studio time_.
-In advance of the workshop, participants need to set aside an additional three hours or so for downloading and installing
-software. The deck contains instructions for Mac OS X, Ubuntu 14, and Windows 8.1, including the option of using
-virtual machines via [VirtualBox](https://www.virtualbox.org/).
+All installed and running on the participant's own computer.
+
+The workshop itself can be comfortably presented in four hours, allowing for some digressions and exploratory
+_studio time_. In advance of the workshop, participants need to set aside an additional three hours or so for
+downloading and installing software. The deck contains instructions for Mac OS X, Ubuntu 14, and Windows 8.1, including
+the option of using virtual machines via [VirtualBox](https://www.virtualbox.org/).
 
 An early version of the workshop was run at [MaptimeSF](http://www.meetup.com/Maptime-SF/) in Nov 2013. More recently,
 it's been/being offered at
@@ -34,8 +36,8 @@ by people studying on their own time, either individually, or in a group where e
 to learn. If a presenter is being paid for their time as they lead people through this deck, in any context, they need
 to [contact me](https://github.com/erictheise) about licensing.
 
-Two small code repositories that accompany this deck, [`geostack-api`](https://github.com/erictheise/geostack-api] and
-[`geostack-map-pages`](https://github.com/erictheise/geostack-map-pages], are MIT-licensed.
+Two small code repositories that accompany this deck, [`geostack-api`](https://github.com/erictheise/geostack-api) and
+[`geostack-map-pages`](https://github.com/erictheise/geostack-map-pages), are MIT-licensed.
 
 If you come across any inaccuracies, or have other suggestions for improving this deck, please consider [opening an
 issue](https://github.com/erictheise/geostack-deck/issues) or submitting a fix via a pull request.

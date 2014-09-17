@@ -11,7 +11,7 @@ application that, despite its simplicity, demonstrates
    and serve map tiles, plus
  * a simple [Node.js](http://nodejs.org/) API that returns [GeoJSON](http://geojson.org/geojson-spec.html#examples) so
    that
- * the [Leaflet](http://leafletjs.com/) mapping library can display markers and popups for points of interest
+ * the [Leaflet](http://leafletjs.com/) mapping library can display markers and popups for points of interest.
 
 All installed and running on the participant's own computer.
 

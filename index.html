@@ -691,7 +691,7 @@
 
               [...]
 
-              /usr/local/Cellar/osm2pgsql/0.82.0: 9 files, 332K, built in 32 seconds
+              /usr/local/Cellar/osm2pgsql/0.84.0: 9 files, 332K, built in 32 seconds
               $
               ```
             </script>
@@ -780,31 +780,35 @@
           </script>
         </section>
 
-        <section>
-          <h2>Mapzen's metro extracts</h2>
-          <p>
-            Mapzen <a href="https://mapzen.com/metro-extracts/">offers hundreds of metro extracts</a>, and you
-            can <a href="http://erictheise.com/blog/2014/08/30/mapzens-openstreetmap-metro-extracts">easily request that
-            they add a new one</a>.<br />
-            Download the <a href="https://s3.amazonaws.com/metro-extracts.mapzen.com/portland.osm.pbf"><em>OSM
-            PBF file</em></a> for <em>Portland</em> (Oregon).
+        <section data-markdown>
+          <script type="text/template">
+            ## Mapzen's metro extracts
+
+            Mapzen [offers hundreds of metro extracts](https://mapzen.com/metro-extracts/), and you<br /> can [easily
+            request that they add a new one](http://erictheise.com/blog/2014/08/30/mapzens-openstreetmap-metro-extracts).
+
+            Download the [_OSM PBF file_](https://s3.amazonaws.com/metro-extracts.mapzen.com/portland.osm.pbf) for
+            _Portland_ (Oregon).
             <img src="images/Mapzen-Portland.png" width="768" height="528" alt="Mapzen Portland extract" />
-          </p>
+
+          </script>
         </section>
 
-        <section>
-          <h2>Creating a spatially-enabled database</h2>
-          <img src="images/PostGIScreate.png" width="768" height="480" alt="Creating spatially-enabled databases" />
-          <p>
-            PostGIS docs tell you how to spatially-enable one database.<br />
-            #ProTip: create a spatially-enabled <em>template</em>.
-          </p>
+        <section data-markdown>
+          <script type="text/template">
+            ## Creating a spatially-enabled database
+            <img src="images/PostGIScreate.png" width="768" height="480" alt="Creating spatially-enabled databases" />
+
+            PostGIS docs tell you how to spatially-enable one database.
+            \#ProTip: create a spatially-enabled <em>template</em>.
+
+          </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             ## Creating a spatially-enabled template
-            Use `psql` to create, connect to, & spatially-enable the template.
+            Use `psql` to create, connect to, & spatially-enable a template.
             ```
             $ psql postgres
             psql (9.3.5)
@@ -819,13 +823,24 @@
             CREATE EXTENSION
             template_postgis=# CREATE EXTENSION hstore;
             CREATE EXTENSION
-            UPDATE pg_database SET datistemplate = true WHERE datname='template_postgis';
-            UPDATE pg_database SET datallowconn = false WHERE datname='template_postgis';
+            template_postgis=# UPDATE pg_database SET datistemplate = true WHERE datname='template_postgis';
+            UPDATE 1
+            template_postgis=# UPDATE pg_database SET datallowconn = false WHERE datname='template_postgis';
+            UPDATE 1
+            template_postgis=#
             ```
-            Create a new database from your template called <em>portland_from_osm</em>.
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Creating a spatially-enabled database<br />from a template
+
+            Create a new database from your template called _portland_from_osm_.
             ```
             template_postgis=# CREATE DATABASE portland_from_osm TEMPLATE template_postgis;
             template_postgis=# \q
+            $
             ```
           </script>
         </section>
@@ -836,7 +851,7 @@
             Import the OSM PBF file into the database we just created.
             ```
             $ osm2pgsql -H localhost --hstore-all -d portland_from_osm ~/Downloads/portland.osm.pbf
-            osm2pgsql SVN version 0.82.0 (64bit id space)
+            osm2pgsql SVN version 0.84.0 (64bit id space)
 
             Using projection SRS 900913 (Spherical Mercator)
             Setting up table: planet_osm_point
